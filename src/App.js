@@ -1,9 +1,12 @@
+import { Route, Routes } from "react-router-dom";
+import RegistrationPage from "./pages/RegistationPage";
+import React from "react";
 
 function App() {
   return (
-    <div className="App">
-      <h2>Hello</h2>
-    </div>
+    <Routes>
+      <Route path="/signup" element={<RegistrationPage />} />
+    </Routes>
   );
 }
 

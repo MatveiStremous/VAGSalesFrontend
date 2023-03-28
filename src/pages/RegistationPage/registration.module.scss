@@ -1,0 +1,77 @@
+.background {
+    background: black;
+    background-size: cover;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.regArea {
+    background-color: white;
+    height: 630px;
+    width: 450px;
+    border-radius: 30px;
+
+    h1 {
+        padding-top: 20px;
+        width: 300px;
+        margin: auto;
+        font-weight: 700;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    h2 {
+        width: 300px;
+        margin: auto;
+        font-weight: 350;
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    input {
+        width: 320px;
+        display: block;
+        margin: auto;
+        margin-bottom: 15px;
+        height: 40px;
+        border-radius: 20px;
+        border: 1px solid black;
+        padding: 0px 20px;
+    }
+
+    button {
+        width: 360px;
+        display: block;
+        margin: auto;
+        margin-bottom: 15px;
+        height: 40px;
+        border-radius: 20px;
+        border: none;
+        background-color: #F29330;
+    }
+}
+
+.signIn {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 45px;
+
+    h4 {
+        margin: 0px;
+        font-weight: 400;
+        font-size: 14px;
+    }
+
+    a {
+        margin: 0px;
+        color: #F29330;
+        font-weight: 700;
+    }
+}
