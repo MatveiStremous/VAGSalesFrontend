@@ -1,24 +1,20 @@
-import s from './registration.module.scss';
+import s from './login.module.scss';
 import React from 'react';
 import AuthService from '../../services/AuthService';
 
-function Registration() {
-    const [name, setName] = React.useState('Matthew');
+function Login() {
     const [password, setPassword] = React.useState('123123');
     const [email, setEmail] = React.useState('Matthew@gmail.com');
-    const [phone, setPhone] = React.useState('3753333333');
 
-    const onRegistration = (e) => {
+    const onLogin = (e) => {
         e.preventDefault();
 
         const user = {
             username: email,
             password: password,
-            phone: phone,
-            name: name
         };
 
-        AuthService.register(user);
+        AuthService.login(user);
     }
 
     return (
@@ -30,24 +26,20 @@ function Registration() {
                     <path d="M0 30C0 13.4314 13.4315 0 30 0H420C436.569 0 450 13.4315 450 30V93.7872C450 93.7872 374.457 82.0638 323.591 82.0638C234.409 82.0638 161.239 95 84.6818 95C40.5 95 0 73.9787 0 73.9787V30Z" fill="#F29330" />
                 </svg>
 
-
-                <h1>СОЗДАТЬ АККАУНТ</h1>
+                <h1>ВХОД</h1>
                 <h2>стань частью <b>volkswagen group</b></h2>
-                <form onSubmit={(e) => onRegistration(e)}>
-                    <input required placeholder='Имя' value={name} onChange={(obj) => setName(obj.target.value)} />
-                    <input required placeholder='Номер телефона' value={phone} onChange={(obj) => setPhone(obj.target.value)} />
+                <form onSubmit={(e) => onLogin(e)}>
                     <input required placeholder='Почта' type="email" value={email} onChange={(obj) => setEmail(obj.target.value)} />
                     <input required placeholder='Пароль' type="password" value={password} onChange={(obj) => setPassword(obj.target.value)} />
-                    <input required placeholder='Повторите пароль' type="password" defaultValue="123123" />
-                    <button>ЗАРЕГИСТРИРОВАТЬСЯ</button>
+                    <button>ВОЙТИ</button>
                 </form>
                 <div className={s.signIn}>
-                    <h4>Уже с нами?</h4>
-                    <a href='/signin'>Войти</a>
+                    <h4>Ещё нет аккаунта?</h4>
+                    <a href='/signup'>Зарегистрироваться</a>
                 </div>
             </div>
         </div>
     );
 }
 
-export default Registration;
+export default Login;
