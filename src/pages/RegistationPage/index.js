@@ -11,12 +11,7 @@ function Registration() {
     const onRegistration = (e) => {
         e.preventDefault();
 
-        const user = {
-            username: email,
-            password: password,
-            phone: phone,
-            name: name
-        };
+        const user = { email, password, phone, name };
 
         AuthService.register(user);
     }

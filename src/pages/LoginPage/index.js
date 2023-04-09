@@ -9,10 +9,7 @@ function Login() {
     const onLogin = (e) => {
         e.preventDefault();
 
-        const user = {
-            username: email,
-            password: password,
-        };
+        const user = { email, password };
 
         AuthService.login(user);
     }
