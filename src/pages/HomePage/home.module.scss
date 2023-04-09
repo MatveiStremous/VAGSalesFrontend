@@ -8,34 +8,6 @@
     display: block;
 }
 
-.header {
-    height: 80px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-
-    .navigation {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 700px;
-    }
-
-    button {
-        cursor: pointer;
-        border-width: 2px;
-        width: 250px;
-        border-radius: 20px;
-        height: 40px;
-        margin-right: 40px;
-        font-size: 18px;
-        font-weight: 100;
-        background-color: white;
-    }
-}
-
 .title {
     background: black;
     height: 100px;
