@@ -20,7 +20,7 @@ function App() {
   React.useEffect(() => {
     if (localStorage.getItem("token")) {
       authService.validToken();
-      setUser(authService.getUserInfo());
+      authService.getUserInfo(setUser);
     }
   }, []);
 

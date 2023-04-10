@@ -3,11 +3,22 @@ import React from 'react';
 import s from './header.module.scss';
 import { Link } from "react-router-dom";
 import AppContex from '../../context';
+import authService from '../../services/AuthService';
 
 export default function Header() {
 
-    const { user } = React.useContext(AppContex);
-    console.log(user)
+    const { user, setUser } = React.useContext(AppContex);
+
+    const onLogOut = () => {
+        authService.logOut();
+        setUser({
+            email: "",
+            name: "",
+            role: "",
+            phone: "",
+        });
+    }
+
     return (
         <div className={s.header}>
             <Link to="/">
@@ -21,11 +32,14 @@ export default function Header() {
                 <p>Поддержка</p>
                 <p>Контакты</p>
             </div>
-            <Link to="/signin">
-                <button>
-                    {user.role === "" ? "Войти" : "Личный кабинет"}
-                </button>
-            </Link>
+            {
+                user.role === "" ?
+                    <Link to="/signin">
+                        <button>Войти</button>
+                    </Link>
+                    : <button onClick={onLogOut}>Выйти</button>
+            }
+
         </div >
     );
 }

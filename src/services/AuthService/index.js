@@ -31,15 +31,19 @@ class AuthService {
         );
     }
 
-    getUserInfo() {
+    getUserInfo(setUser) {
         const token = localStorage.getItem("token");
-        const resp = axios.get(url + "/getUserInfo", {
+        axios.get(url + "/getUserInfo", {
             headers: {
                 'Authorization': "Bearer " + token
             }
-        });
-        console.log(resp.data)
-        return resp.data;
+        }).then((resp) =>
+            setUser(resp.data)
+        )
+    }
+
+    logOut() {
+        localStorage.removeItem("token");
     }
 }
 
