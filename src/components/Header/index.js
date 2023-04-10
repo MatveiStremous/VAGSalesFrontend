@@ -1,8 +1,13 @@
 import Logo from '../../components/Logo';
+import React from 'react';
 import s from './header.module.scss';
 import { Link } from "react-router-dom";
+import AppContex from '../../context';
 
 export default function Header() {
+
+    const { user } = React.useContext(AppContex);
+    console.log(user)
     return (
         <div className={s.header}>
             <Link to="/">
@@ -18,7 +23,7 @@ export default function Header() {
             </div>
             <Link to="/signin">
                 <button>
-                    Войти
+                    {user.role === "" ? "Войти" : "Личный кабинет"}
                 </button>
             </Link>
         </div >
