@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import RegistrationPage from "./pages/RegistationPage";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
+import CatalogPage from "./pages/CatalogPage";
 import React from "react";
 import AppContex from "./context";
 import authService from "./services/AuthService";
@@ -29,6 +30,7 @@ function App() {
         <Route path="/signup" element={<RegistrationPage />} />
         <Route path="/signin" element={<LoginPage />} />
         <Route path="/" element={<HomePage />} />
+        <Route path="/catalog" element={<CatalogPage />} />
       </Routes>
     </AppContex.Provider>
 
