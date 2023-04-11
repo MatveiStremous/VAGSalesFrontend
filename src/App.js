@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import CatalogPage from "./pages/CatalogPage";
 import BrandsPage from "./pages/BrandsPage";
+import ModelsPage from "./pages/ModelsPage";
 import React from "react";
 import AppContex from "./context";
 import authService from "./services/AuthService";
@@ -33,6 +34,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
         <Route path="/brands" element={<BrandsPage />} />
+        <Route path="/models" element={<ModelsPage />} />
       </Routes>
     </AppContex.Provider>
 

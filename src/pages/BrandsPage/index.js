@@ -1,7 +1,7 @@
 import s from './brands.module.scss';
 import React from 'react';
 import Header from '../../components/Header';
-import carService from '../../services/CarService';
+import brandService from '../../services/BrandService';
 
 export default function Brands() {
     const [brands, setBrands] = React.useState([]);
@@ -14,18 +14,18 @@ export default function Brands() {
     });
 
     React.useEffect(() => {
-        carService.getAllBrands(setBrands);
+        brandService.getAllBrands(setBrands);
     }, []);
 
     const onDeleteBrand = (id) => {
-        carService.deleteBrand(id);
+        brandService.deleteBrand(id);
         window.location.reload();
     }
 
     const onAddBrand = (e) => {
         e.preventDefault();
         const brand = { name: brandName };
-        carService.addNewBrand(brand);
+        brandService.addNewBrand(brand);
         window.location.reload();
     }
 
@@ -35,7 +35,7 @@ export default function Brands() {
 
     const onCommitEdit = (e) => {
         e.preventDefault();
-        carService.updateBrand(updatedBrand.id, updatedBrand);
+        brandService.updateBrand(updatedBrand.id, updatedBrand);
         window.location.reload();
     }
 

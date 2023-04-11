@@ -1,7 +1,7 @@
 import axios from "axios";
 const url = "http://localhost:7070";
 
-class CarService {
+class BrandService {
     getAllBrands(setBrands) {
         const token = localStorage.getItem("token");
         axios.get(url + "/brands", {
@@ -41,5 +41,5 @@ class CarService {
     }
 }
 
-const carService = new CarService();
-export default carService;
+const brandService = new BrandService();
+export default brandService;
