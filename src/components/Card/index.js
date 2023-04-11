@@ -1,8 +1,14 @@
 import s from './card.module.scss'
+import { useNavigate } from 'react-router-dom';
 
 export default function Card({ car }) {
+    const Navigate = useNavigate();
+
+    const onClickCard = () => {
+        Navigate('/carInfo/' + car.id);
+    }
     return (
-        <div className={s.card}>
+        <div className={s.card} onClick={() => onClickCard()}>
             <img className={s.photo} src={car.imageURL} alt="carPhoto" />
             <div className={s.info}>
                 <div className={s.title}>{car.brandName} {car.modelName}</div>

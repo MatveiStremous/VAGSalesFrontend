@@ -16,7 +16,6 @@ export default function Catalog() {
             <div className={s.content}>
                 <Header />
                 <div className={s.body}>
-
                     {cars
                         .map((car) => (
                             <Card car={car} />

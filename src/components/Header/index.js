@@ -25,8 +25,12 @@ export default function Header() {
                 <Logo width="100" height="100" />
             </Link>
             <div className={s.navigation}>
-                <p>Каталог</p>
-                <p>О нас</p>
+                <Link to="/catalog" style={{ textDecoration: 'none' }}>
+                    <p>Каталог</p>
+                </Link>
+                <Link to="/about" style={{ textDecoration: 'none' }}>
+                    <p>О нас</p>
+                </Link>
                 <p>Марки</p>
                 <p>Тест-драйв</p>
                 <p>Поддержка</p>
