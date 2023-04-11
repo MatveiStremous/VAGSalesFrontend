@@ -10,6 +10,7 @@ import AppContex from "./context";
 import authService from "./services/AuthService";
 import CarInfoPage from "./pages/CarInfoPage";
 import AboutPage from "./pages/AboutPage";
+import ContactsPage from "./pages/ContactsPage";
 
 function App() {
   const [user, setUser] = React.useState(() => {
@@ -39,6 +40,7 @@ function App() {
         <Route path="/models" element={<ModelsPage />} />
         <Route path="/carInfo/:id" element={<CarInfoPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/contacts" element={<ContactsPage />} />
       </Routes>
     </AppContex.Provider>
 

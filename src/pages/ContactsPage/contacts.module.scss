@@ -1,0 +1,25 @@
+.background {
+    background: white;
+    background-size: cover;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    display: block;
+}
+
+.body {
+    margin-top: 30px;
+    margin-left: 80px;
+    margin-right: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .data {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+}

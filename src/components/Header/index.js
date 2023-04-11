@@ -34,7 +34,9 @@ export default function Header() {
                 <p>Марки</p>
                 <p>Тест-драйв</p>
                 <p>Поддержка</p>
-                <p>Контакты</p>
+                <Link to="/contacts" style={{ textDecoration: 'none' }}>
+                    <p>Контакты</p>
+                </Link>
             </div>
             {
                 user.role === "" ?

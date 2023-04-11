@@ -2,7 +2,7 @@ import s from './about.module.scss';
 import React from 'react';
 import Header from '../../components/Header';
 
-export default function Home() {
+export default function About() {
     return (
         <div className={s.background}>
             <div className={s.content}>
