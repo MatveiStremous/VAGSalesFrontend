@@ -9,7 +9,6 @@ export default function Catalog() {
 
     React.useEffect(() => {
         carService.getAllCars(setCars);
-        console.log(cars);
     }, []);
 
     return (

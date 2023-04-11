@@ -1,0 +1,76 @@
+.background {
+    background: white;
+    background-size: cover;
+    justify-content: center;
+    display: block;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 20px;
+    margin-left: 80px;
+    margin-right: 80px;
+
+    .upInfo {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        .photo {
+            margin-top: 80px;
+            width: 55%;
+        }
+
+        .rightInfo {
+            width: 40%;
+
+            .allData {
+                .title {
+                    padding-left: 50px;
+                    font-size: 28px;
+                    font-weight: 700;
+                }
+
+                .row {
+                    margin-bottom: 20px;
+                    font-size: 20px;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .name {
+                        margin: 0px;
+                        font-weight: 100;
+                    }
+
+                    .data {
+                        margin: 0px;
+                        font-weight: 700;
+                    }
+                }
+            }
+
+            .descr {
+                font-size: 20px;
+                display: block;
+
+                .name {
+                    margin: 0px;
+                    font-weight: 100;
+                    margin-bottom: 20px;
+                }
+
+                .data {
+                    margin: 0px;
+                }
+            }
+        }
+    }
+
+    .bottomInfo {
+        font-size: 28px;
+        font-weight: 400;
+    }
+}
