@@ -1,0 +1,38 @@
+.background {
+    background: white;
+    background-size: cover;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    display: block;
+}
+
+.body {
+    margin-top: 50px;
+    margin-left: 80px;
+    margin-right: 80px;
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+        display: flex;
+        flex-direction: column;
+
+        .data {
+            font-weight: 700;
+            font-size: 20px;
+
+        }
+
+        .leftPhoto {
+            width: 80%;
+        }
+    }
+
+    .right {
+        .rightPhoto {
+            width: 100%;
+        }
+    }
+}
