@@ -1,30 +1,30 @@
 import s from './card.module.scss'
 
-export default function Card() {
+export default function Card({ car }) {
     return (
         <div className={s.card}>
-            <img className={s.photo} src='images/CatalogCar1.png' alt="carPhoto" />
+            <img className={s.photo} src={car.imageURL} alt="carPhoto" />
             <div className={s.info}>
-                <div className={s.title}>AUDI RS 7 SPORTBACK</div>
+                <div className={s.title}>{car.brandName} {car.modelName}</div>
                 <div className={s.data}>
                     <div className={s.col}>
                         <div className={s.row}>
                             <p className={s.name}>КПП</p>
-                            <h4 className={s.value}>Механика</h4>
+                            <h4 className={s.value}>{car.transmission}</h4>
                         </div>
                         <div className={s.row}>
                             <p className={s.name}>Год выпуска</p>
-                            <h4 className={s.value}>2023</h4>
+                            <h4 className={s.value}>{car.year}</h4>
                         </div>
                     </div>
                     <div className={s.col}>
                         <div className={s.row}>
                             <p className={s.name}>Кузов</p>
-                            <h4 className={s.value}>Sedan</h4>
+                            <h4 className={s.value}>{car.bodyType}</h4>
                         </div>
                         <div className={s.row}>
                             <p className={s.name}>Объём двигателя</p>
-                            <h4 className={s.value}>3,2</h4>
+                            <h4 className={s.value}>{car.engineCapacity}</h4>
                         </div>
                     </div>
                 </div>
