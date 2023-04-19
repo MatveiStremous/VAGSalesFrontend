@@ -2,11 +2,10 @@ import axios from "axios";
 const url = "http://localhost:7070";
 
 class AuthService {
-    login(user) {
-        return (
-            axios.post(url + "/login", user)
-                .then((res) => localStorage.setItem("token", res.data['jwt-token']))
-        );
+    async login(user) {
+        const { data } = await axios.post(url + "/login", user);
+        localStorage.setItem("token", data['jwt-token']);
+        return;
     };
 
     register(user) {
@@ -31,15 +30,13 @@ class AuthService {
         );
     }
 
-    getUserInfo(setUser) {
+    getUserInfo() {
         const token = localStorage.getItem("token");
-        axios.get(url + "/getUserInfo", {
+        return axios.get(url + "/getUserInfo", {
             headers: {
                 'Authorization': "Bearer " + token
             }
-        }).then((resp) =>
-            setUser(resp.data)
-        )
+        })
     }
 
     logOut() {

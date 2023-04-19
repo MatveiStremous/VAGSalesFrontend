@@ -1,17 +1,23 @@
 import s from './login.module.scss';
 import React from 'react';
 import AuthService from '../../services/AuthService';
+import { useNavigate } from 'react-router-dom';
+import AppContex from '../../context';
 
 function Login() {
     const [password, setPassword] = React.useState('123123');
     const [email, setEmail] = React.useState('Matthew@gmail.com');
+    const Navigate = useNavigate();
+    const { setUser } = React.useContext(AppContex);
 
-    const onLogin = (e) => {
+    const onLogin = async (e) => {
         e.preventDefault();
 
         const user = { email, password };
 
-        AuthService.login(user);
+        await AuthService.login(user);
+        AuthService.getUserInfo().then(({ data }) => setUser(data));
+        Navigate("/");
     }
 
     return (

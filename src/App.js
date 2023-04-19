@@ -7,7 +7,6 @@ import BrandsPage from "./pages/BrandsPage";
 import ModelsPage from "./pages/ModelsPage";
 import React from "react";
 import AppContex from "./context";
-import authService from "./services/AuthService";
 import CarInfoPage from "./pages/CarInfoPage";
 import AboutPage from "./pages/AboutPage";
 import ContactsPage from "./pages/ContactsPage";
@@ -21,13 +20,6 @@ function App() {
       phone: "",
     };
   });
-
-  React.useEffect(() => {
-    if (localStorage.getItem("token")) {
-      authService.validToken();
-      authService.getUserInfo(setUser);
-    }
-  }, []);
 
   return (
     <AppContex.Provider value={{ user, setUser }}>

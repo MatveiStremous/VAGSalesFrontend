@@ -6,7 +6,6 @@ import AppContex from '../../context';
 import authService from '../../services/AuthService';
 
 export default function Header() {
-
     const { user, setUser } = React.useContext(AppContex);
 
     const onLogOut = () => {
@@ -18,6 +17,13 @@ export default function Header() {
             phone: "",
         });
     }
+
+    React.useEffect(() => {
+        if (localStorage.getItem("token")) {
+            authService.validToken();
+            authService.getUserInfo().then(({ data }) => setUser(data));
+        }
+    }, [setUser]);
 
     return (
         <div className={s.header}>
