@@ -24,18 +24,16 @@ class CarService {
         });
     };
 
-    getCarsEnums(setCarEnums) {
+    getCarsEnums() {
         const token = localStorage.getItem("token");
-        axios.get(url + "/carsEnums/", {
+        return axios.get(url + "/carEnums/", {
             headers: {
                 Authorization: "Bearer " + token,
             },
-        }).then((response) => {
-            setCarEnums(response.data);
         });
     }
 
-    deleteModel(id) {
+    deleteCar(id) {
         const token = localStorage.getItem("token");
         axios.delete(url + "/car/" + id, {
             headers: {
@@ -44,7 +42,7 @@ class CarService {
         });
     }
 
-    addNewModel(car) {
+    addNewCar(car) {
         const token = localStorage.getItem("token");
         axios.post(url + "/car", car, {
             headers: {

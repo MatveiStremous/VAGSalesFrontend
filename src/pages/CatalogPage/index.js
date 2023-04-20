@@ -18,7 +18,7 @@ export default function Catalog() {
                 <div className={s.body}>
                     {cars
                         .map((car) => (
-                            <Card car={car} />
+                            <Card key={car.id} car={car} />
                         ))}
                 </div>
             </div>

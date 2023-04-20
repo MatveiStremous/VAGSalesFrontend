@@ -13,6 +13,17 @@ class ModelService {
         });
     };
 
+    getModelsByBrandId(brandId, setModels) {
+        const token = localStorage.getItem("token");
+        axios.get(url + "/models/" + brandId, {
+            headers: {
+                Authorization: "Bearer " + token,
+            },
+        }).then((response) => {
+            setModels(response.data);
+        });
+    }
+
     deleteModel(id) {
         const token = localStorage.getItem("token");
         axios.delete(url + "/model/" + id, {
