@@ -40,7 +40,7 @@ export default function AddingNewCar() {
 
     const onAddCar = (e) => {
         e.preventDefault();
-        const car = { bodyType, transmission, fuelType, engineCapacity, year, imageUrl, description, modelId };
+        const car = { bodyType, transmission, fuelType, engineCapacity, year, imageURL: imageUrl, description, modelId };
         carService.addNewCar(car);
         window.location.reload();
     }

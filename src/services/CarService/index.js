@@ -3,23 +3,13 @@ const url = "http://localhost:7070";
 
 class CarService {
     getAllCars(setCars) {
-        const token = localStorage.getItem("token");
-        axios.get(url + "/cars", {
-            headers: {
-                Authorization: "Bearer " + token,
-            },
-        }).then((response) => {
+        axios.get(url + "/cars").then((response) => {
             setCars(response.data);
         });
     };
 
     getCarInfo(id, setCar) {
-        const token = localStorage.getItem("token");
-        axios.get(url + "/carInfo/" + id, {
-            headers: {
-                Authorization: "Bearer " + token,
-            },
-        }).then((response) => {
+        axios.get(url + "/carInfo/" + id).then((response) => {
             setCar(response.data);
         });
     };

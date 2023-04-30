@@ -3,14 +3,16 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../../components/Header';
 import carService from '../../services/CarService';
+import NewRequestWindow from '../../components/NewRequestWindow';
 
 export default function CarInfo() {
     const { id } = useParams();
     const [car, setCar] = React.useState({});
+    const [isNewRequestOpened, setIsNewRequestOpened] = React.useState(false);
 
     React.useEffect(() => {
         carService.getCarInfo(id, setCar);
-    }, []);
+    }, [id]);
 
     return (
         <div className={s.background}>
@@ -49,8 +51,10 @@ export default function CarInfo() {
                     </div>
                 </div>
                 <div className={s.bottomInfo}>
-                    <p>{car.modelDescription}</p>
+                    <p className={s.leftBottom}>{car.modelDescription}</p>
+                    <button className={s.rightBottom} onClick={() => setIsNewRequestOpened(true)}>Заказать консультацию</button>
                 </div>
+                {isNewRequestOpened && <NewRequestWindow setActive={setIsNewRequestOpened} carId={id} />}
             </div>
         </div >
     );

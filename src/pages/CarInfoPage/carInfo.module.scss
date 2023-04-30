@@ -72,5 +72,18 @@
     .bottomInfo {
         font-size: 28px;
         font-weight: 400;
+        display: flex;
+        justify-content: space-between;
+
+        .rightBottom {
+            margin-top: 15px;
+            font-size: 35px;
+            width: 600px;
+            height: 60px;
+            border-radius: 20px;
+            border: none;
+            background-color: #F29330;
+            cursor: pointer;
+        }
     }
 }
