@@ -2,16 +2,12 @@ import axios from "axios";
 const url = "http://localhost:7070";
 
 class AuthService {
-    async login(user) {
-        const { data } = await axios.post(url + "/login", user);
-        localStorage.setItem("token", data['jwt-token']);
-        return;
+    login(user) {
+        return axios.post(url + "/login", user);
     };
 
     register(user) {
-        return (
-            axios.post(url + "/registration", user)
-        );
+        return axios.post(url + "/registration", user);
     };
 
     validToken() {

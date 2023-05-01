@@ -1,19 +1,33 @@
 import s from './registration.module.scss';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import AuthService from '../../services/AuthService';
+import Notification from '../../components/Notification';
 
 function Registration() {
     const [name, setName] = React.useState('Matthew');
     const [password, setPassword] = React.useState('123123');
     const [email, setEmail] = React.useState('Matthew@gmail.com');
     const [phone, setPhone] = React.useState('3753333333');
+    const Navigate = useNavigate();
+    const [isNotificationActive, setIsNotificationActive] = React.useState(false);
+    const [notificationText, setNotificationText] = React.useState("Неверно введены логин или пароль.");
+    const [notificationTitle, setNotificationTitle] = React.useState("Ошибка");
 
     const onRegistration = (e) => {
         e.preventDefault();
 
         const user = { email, password, phone, name };
 
-        AuthService.register(user);
+        AuthService.register(user)
+            .then(() => {
+                Navigate("/login");
+            })
+            .catch(function (error) {
+                setNotificationText(error.response.data.message);
+                setIsNotificationActive(true);
+                setNotificationTitle("Ошибка")
+            });
     }
 
     return (
@@ -40,6 +54,7 @@ function Registration() {
                     <h4>Уже с нами?</h4>
                     <a href='/signin'>Войти</a>
                 </div>
+                {isNotificationActive && <Notification setActive={setIsNotificationActive} title={notificationTitle} text={notificationText} />}
             </div>
         </div>
     );

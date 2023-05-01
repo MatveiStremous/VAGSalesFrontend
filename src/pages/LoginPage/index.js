@@ -3,21 +3,36 @@ import React from 'react';
 import AuthService from '../../services/AuthService';
 import { useNavigate } from 'react-router-dom';
 import AppContex from '../../context';
+import Notification from '../../components/Notification';
 
 function Login() {
     const [password, setPassword] = React.useState('123123');
     const [email, setEmail] = React.useState('Matthew@gmail.com');
     const Navigate = useNavigate();
     const { setUser } = React.useContext(AppContex);
+    const [isNotificationActive, setIsNotificationActive] = React.useState(false);
+    const [notificationText, setNotificationText] = React.useState("Неверно введены логин или пароль.");
+    const [notificationTitle, setNotificationTitle] = React.useState("Ошибка");
 
-    const onLogin = async (e) => {
+    const onLogin = (e) => {
         e.preventDefault();
 
         const user = { email, password };
 
-        await AuthService.login(user);
-        AuthService.getUserInfo().then(({ data }) => setUser(data));
-        Navigate("/");
+        AuthService.login(user)
+            .then(({ data }) => {
+                localStorage.setItem("token", data['jwt-token'])
+                AuthService.getUserInfo()
+                    .then(({ data }) => setUser(data));
+                Navigate("/");
+            })
+            .catch(function (error) {
+                setNotificationText("Неверно введены логин или пароль.");
+                setIsNotificationActive(true);
+                setNotificationTitle("Ошибка")
+            });
+
+
     }
 
     return (
@@ -40,6 +55,7 @@ function Login() {
                     <h4>Ещё нет аккаунта?</h4>
                     <a href='/signup'>Зарегистрироваться</a>
                 </div>
+                {isNotificationActive && <Notification setActive={setIsNotificationActive} title={notificationTitle} text={notificationText} />}
             </div>
         </div>
     );
