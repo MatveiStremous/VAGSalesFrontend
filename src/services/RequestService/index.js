@@ -27,6 +27,14 @@ class RequestService {
             },
         });
     }
+
+    getDaysData() {
+        return axios.get(url + "/daysdata");
+    }
+
+    getCarsData() {
+        return axios.get(url + "/carsdata");
+    }
 }
 
 const requestService = new RequestService();
