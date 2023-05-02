@@ -6,6 +6,10 @@ class RequestService {
         return axios.get(url + "/requests");
     };
 
+    getAllRequestsByEmail(email) {
+        return axios.get(url + "/requests/" + email);
+    };
+
     deleteRequest(id) {
         const token = localStorage.getItem("token");
         return axios.delete(url + "/request/" + id, {
@@ -22,6 +26,16 @@ class RequestService {
     updateRequest(id, request) {
         const token = localStorage.getItem("token");
         return axios.put(url + "/request/" + id, request, {
+            headers: {
+                Authorization: "Bearer " + token,
+            },
+        });
+    }
+
+    changeStatus(id, status) {
+        console.log(status);
+        const token = localStorage.getItem("token");
+        return axios.put(url + "/request/status/" + id + "/" + status, {
             headers: {
                 Authorization: "Bearer " + token,
             },

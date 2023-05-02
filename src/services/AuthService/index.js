@@ -38,6 +38,24 @@ class AuthService {
     logOut() {
         localStorage.removeItem("token");
     }
+
+    changePassword(data) {
+        const token = localStorage.getItem("token");
+        return axios.put(url + "/changepassword", data, {
+            headers: {
+                'Authorization': "Bearer " + token
+            }
+        });
+    }
+
+    changePersonalInfo(data) {
+        const token = localStorage.getItem("token");
+        return axios.put(url + "/changeinfo", data, {
+            headers: {
+                'Authorization': "Bearer " + token
+            }
+        });
+    }
 }
 
 const authService = new AuthService();

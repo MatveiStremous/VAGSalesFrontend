@@ -13,6 +13,7 @@ import ContactsPage from "./pages/ContactsPage";
 import AddingNewCarPage from "./pages/AddingNewCarPage";
 import SupportPage from "./pages/SupportPage";
 import StatisticsPage from "./pages/StatisticPage";
+import AccountPage from "./pages/AccountPage";
 
 function App() {
   const [user, setUser] = React.useState(() => {
@@ -39,6 +40,7 @@ function App() {
         <Route path="/addingNewCar" element={<AddingNewCarPage />} />
         <Route path="/support" element={<SupportPage />} />
         <Route path="/statistic" element={<StatisticsPage />} />
+        <Route path="/account" element={<AccountPage />} />
       </Routes>
     </AppContex.Provider>
 
