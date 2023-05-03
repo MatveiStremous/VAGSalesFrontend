@@ -2,16 +2,27 @@ import s from './carInfo.module.scss';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../../components/Header';
-import carService from '../../services/CarService';
+import CarService from '../../services/CarService';
 import NewRequestWindow from '../../components/NewRequestWindow';
+import AppContex from '../../context';
+import EditCarForm from '../../components/EditCarForm';
+import { useNavigate } from 'react-router-dom';
 
 export default function CarInfo() {
+    const { user } = React.useContext(AppContex);
     const { id } = useParams();
     const [car, setCar] = React.useState({});
     const [isNewRequestOpened, setIsNewRequestOpened] = React.useState(false);
+    const [isEdit, setIsEdit] = React.useState(false);
+    const Navigate = useNavigate();
+
+    const deleteThisCar = () => {
+        CarService.deleteCar(id);
+        Navigate("/catalog");
+    }
 
     React.useEffect(() => {
-        carService.getCarInfo(id, setCar);
+        CarService.getCarInfo(id, setCar);
     }, [id]);
 
     return (
@@ -49,12 +60,23 @@ export default function CarInfo() {
                             <h4 className={s.data}>{car.description}</h4>
                         </div>
                     </div>
+                    {
+                        (user.role === "ROLE_MANAGER" || user.role === "ROLE_ADMIN") &&
+                        <div>
+                            <button onClick={() => deleteThisCar()}>Удалить</button>
+                            <button onClick={() => setIsEdit(true)}>Редактировать</button>
+                        </div>
+                    }
                 </div>
                 <div className={s.bottomInfo}>
                     <p className={s.leftBottom}>{car.modelDescription}</p>
                     <button className={s.rightBottom} onClick={() => setIsNewRequestOpened(true)}>Заказать консультацию</button>
                 </div>
                 {isNewRequestOpened && <NewRequestWindow setActive={setIsNewRequestOpened} carId={id} />}
+                {
+                    isEdit &&
+                    <EditCarForm car={car} />
+                }
             </div>
         </div >
     );
