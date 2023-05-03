@@ -3,12 +3,7 @@ const url = "http://localhost:7070";
 
 class BrandService {
     getAllBrands(setBrands) {
-        const token = localStorage.getItem("token");
-        axios.get(url + "/brands", {
-            headers: {
-                Authorization: "Bearer " + token,
-            },
-        }).then((response) => {
+        axios.get(url + "/brands").then((response) => {
             setBrands(response.data);
         });
     };

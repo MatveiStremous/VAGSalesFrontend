@@ -15,12 +15,7 @@ class CarService {
     };
 
     getCarsEnums() {
-        const token = localStorage.getItem("token");
-        return axios.get(url + "/carEnums/", {
-            headers: {
-                Authorization: "Bearer " + token,
-            },
-        });
+        return axios.get(url + "/carEnums/");
     }
 
     deleteCar(id) {
