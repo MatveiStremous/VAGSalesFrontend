@@ -80,7 +80,7 @@ export default function AccountPage() {
                                         <div>{request.carName}</div>
                                         <div>{request.status}</div>
                                         {
-                                            request.status !== "Отменена" &&
+                                            request.status === "Оформлена" &&
                                             <button onClick={() => onCancelRequest(request.id)}>Отменить</button>
                                         }
                                     </div>
