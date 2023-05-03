@@ -16,6 +16,7 @@ import StatisticsPage from "./pages/StatisticPage";
 import AccountPage from "./pages/AccountPage";
 import UsersPage from "./pages/UsersPage";
 import RequestsPage from "./pages/RequestsPage";
+import QuestionsPage from "./pages/QuestionsPage";
 
 function App() {
   const [user, setUser] = React.useState(() => {
@@ -45,6 +46,7 @@ function App() {
         <Route path="/account" element={<AccountPage />} />
         <Route path="/users" element={<UsersPage />} />
         <Route path="/requests" element={<RequestsPage />} />
+        <Route path="/questions" element={<QuestionsPage />} />
       </Routes>
     </AppContex.Provider>
 
