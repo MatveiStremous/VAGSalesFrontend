@@ -6,7 +6,7 @@ import AuthService from '../../services/AuthService';
 import RequestService from '../../services/RequestService';
 
 export default function AccountPage() {
-    const { user } = React.useContext(AppContex);
+    const { user, setUser } = React.useContext(AppContex);
     const [email, setEmail] = React.useState(user.email);
     const [name, setName] = React.useState(user.name);
     const [phone, setPhone] = React.useState(user.phone);
@@ -35,6 +35,17 @@ export default function AccountPage() {
     const onCancelRequest = (id) => {
         RequestService.changeStatus(id, "Отменена");
         window.location.reload();
+    }
+
+    const onLogOut = () => {
+        AuthService.logOut();
+        setUser({
+            email: "",
+            name: "",
+            role: "",
+            phone: "",
+        });
+        window.location.replace("/");
     }
 
     React.useEffect(() => {
@@ -71,6 +82,7 @@ export default function AccountPage() {
                             <input required placeholder='Повторите ваш новый пароль' type="password" value={newPassword2} onChange={(obj) => setNewPassword2(obj.target.value)} />
                             <button>Сохранить новый пароль</button>
                         </form>
+                        <button onClick={onLogOut}>Выйти</button>
                         <div>
                             {requests
                                 .map((request) => (

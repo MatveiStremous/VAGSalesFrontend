@@ -8,23 +8,6 @@ import authService from '../../services/AuthService';
 export default function Header() {
     const { user, setUser } = React.useContext(AppContex);
 
-    const onLogOut = () => {
-        authService.logOut();
-        setUser({
-            email: "",
-            name: "",
-            role: "",
-            phone: "",
-        });
-    }
-
-    React.useEffect(() => {
-        if (localStorage.getItem("token")) {
-            authService.validToken();
-            authService.getUserInfo().then(({ data }) => setUser(data));
-        }
-    }, [setUser]);
-
     return (
         <div className={s.header}>
             <Link to="/">
@@ -37,19 +20,34 @@ export default function Header() {
                 <Link to="/about" style={{ textDecoration: 'none' }}>
                     <p>О нас</p>
                 </Link>
-                <p>Марки</p>
-                <p>Тест-драйв</p>
-                <p>Поддержка</p>
+                <Link to="/support" style={{ textDecoration: 'none' }}>
+                    <p>Поддержка</p>
+                </Link>
                 <Link to="/contacts" style={{ textDecoration: 'none' }}>
                     <p>Контакты</p>
                 </Link>
+                {
+                    (user.role === "ROLE_MANAGER" || user.role === "ROLE_ADMIN") &&
+                    <Link to="/manager" style={{ textDecoration: 'none' }}>
+                        <p>Управление</p>
+                    </Link>
+                }
+                {
+                    user.role === "ROLE_ADMIN" &&
+                    <Link to="/users" style={{ textDecoration: 'none' }}>
+                        <p>Пользователи</p>
+                    </Link>
+                }
             </div>
             {
                 user.role === "" ?
                     <Link to="/signin">
                         <button>Войти</button>
                     </Link>
-                    : <button onClick={onLogOut}>Выйти</button>
+                    :
+                    <Link to="/account">
+                        <button>Личный кабинет</button>
+                    </Link>
             }
 
         </div >

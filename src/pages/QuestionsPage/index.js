@@ -2,6 +2,7 @@ import s from './questionsPage.module.scss';
 import React from 'react';
 import Header from '../../components/Header';
 import QuestionService from '../../services/QuestionService';
+import AgreeWindow from '../../components/AgreeWindow';
 
 export default function QuestionsPage() {
     const [questions, setQuestions] = React.useState([]);
@@ -9,16 +10,18 @@ export default function QuestionsPage() {
     const [answeringQuestion, setAnsweringQuestion] = React.useState({});
     const [answer, setAnswer] = React.useState("");
     const [isAnswer, setIsAnswer] = React.useState(false);
+    const [isAgreeWindowActive, setIsAgreeWindowActive] = React.useState(false);
 
     const onAnswerQuestion = (question) => {
         setIsAnswer(true);
         setAnsweringQuestion(question);
     }
 
-    const onCommitEdit = () => {
+    const onCommitAnswer = () => {
         setIsAnswer(false);
         const ans = { name: answeringQuestion.name, email: answeringQuestion.email, message: answer };
         QuestionService.answerToMessage(ans);
+        QuestionService.deleteQuestion(answeringQuestion.id);
         window.location.reload();
     }
 
@@ -48,7 +51,7 @@ export default function QuestionsPage() {
                                 <div>{answeringQuestion.email}</div>
                                 <div>{answeringQuestion.message}</div>
                                 <input value={answer} onChange={(obj) => setAnswer(obj.target.value)} />
-                                <button onClick={() => onCommitEdit()}>Отправить ответ</button>
+                                <button onClick={() => setIsAgreeWindowActive(true)}>Отправить ответ</button>
                             </div>
                         }
                         <input value={findValue} onChange={(obj) => setFindValue(obj.target.value.toLowerCase())}></input>
@@ -68,6 +71,13 @@ export default function QuestionsPage() {
                         </div>
                     </div>
                 </div>
+                {isAgreeWindowActive &&
+                    <AgreeWindow
+                        setActive={setIsAgreeWindowActive}
+                        fun={onCommitAnswer}
+                        title={"Отправка ответа"}
+                        text="Вы действительно хотите отправить этот ответ на вопрос?" />
+                }
             </div>
         </div >
     );

@@ -13,6 +13,10 @@ class QuestionService {
     answerToMessage(question) {
         return axios.post(url + "/answer", question);
     }
+
+    deleteQuestion(id) {
+        return axios.delete(url + "/answer/" + id);
+    }
 }
 
 const questionService = new QuestionService();

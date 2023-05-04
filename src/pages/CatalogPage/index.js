@@ -46,7 +46,6 @@ export default function Catalog() {
             <div className={s.content}>
                 <Header />
                 <div className={s.filter}>
-                    {console.log(brandName)}
                     <p>Бренд</p>
                     <select defaultValue="" value={brandName} onChange={(obj) => setBrandName(obj.target.value)}>
                         <option value="">Все</option>

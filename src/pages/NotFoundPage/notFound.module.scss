@@ -1,0 +1,32 @@
+.background {
+    background: black;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin: auto;
+
+    .body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        h1 {
+            font-size: 400px;
+            font-weight: 1000;
+            color: #F29330;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 60px;
+            font-weight: 1000;
+            color: #F29330;
+            margin: 0;
+        }
+    }
+}
