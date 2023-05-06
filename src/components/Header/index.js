@@ -1,55 +1,37 @@
 import Logo from '../../components/Logo';
 import React from 'react';
 import s from './header.module.scss';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AppContex from '../../context';
-import authService from '../../services/AuthService';
 
 export default function Header() {
-    const { user, setUser } = React.useContext(AppContex);
-
+    const { user } = React.useContext(AppContex);
+    const Navigate = useNavigate();
     return (
         <div className={s.header}>
             <Link to="/">
                 <Logo width="100" height="100" />
             </Link>
             <div className={s.navigation}>
-                <Link to="/catalog" style={{ textDecoration: 'none' }}>
-                    <p>Каталог</p>
-                </Link>
-                <Link to="/about" style={{ textDecoration: 'none' }}>
-                    <p>О нас</p>
-                </Link>
-                <Link to="/support" style={{ textDecoration: 'none' }}>
-                    <p>Поддержка</p>
-                </Link>
-                <Link to="/contacts" style={{ textDecoration: 'none' }}>
-                    <p>Контакты</p>
-                </Link>
+                <p onClick={() => { Navigate("/catalog") }}>Каталог</p>
+                <p onClick={() => { Navigate("/about") }}>О нас</p>
+                <p onClick={() => { Navigate("/support") }}>Поддержка</p>
+                <p onClick={() => { Navigate("/contacts") }}>Контакты</p>
                 {
                     (user.role === "ROLE_MANAGER" || user.role === "ROLE_ADMIN") &&
-                    <Link to="/manager" style={{ textDecoration: 'none' }}>
-                        <p>Управление</p>
-                    </Link>
+                    <p onClick={() => { Navigate("/manager") }}>Управление</p>
                 }
                 {
                     user.role === "ROLE_ADMIN" &&
-                    <Link to="/users" style={{ textDecoration: 'none' }}>
-                        <p>Пользователи</p>
-                    </Link>
+                    <p onClick={() => { Navigate("/users") }}>Пользователи</p>
                 }
             </div>
             {
                 user.role === "" ?
-                    <Link to="/signin">
-                        <button>Войти</button>
-                    </Link>
+                    <button onClick={() => { Navigate("/signin") }}>Войти</button>
                     :
-                    <Link to="/account">
-                        <button>Личный кабинет</button>
-                    </Link>
+                    <button onClick={() => { Navigate("/account") }}>Личный кабинет</button>
             }
-
         </div >
     );
 }

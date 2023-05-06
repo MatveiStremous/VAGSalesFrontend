@@ -21,7 +21,7 @@ function Registration() {
 
         AuthService.register(user)
             .then(() => {
-                Navigate("/login");
+                Navigate("/signin");
             })
             .catch(function (error) {
                 setNotificationText(error.response.data.message);

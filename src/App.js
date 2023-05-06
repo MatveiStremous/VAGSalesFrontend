@@ -1,12 +1,14 @@
 import { Route, Routes } from "react-router-dom";
+import AuthService from "./services/AuthService";
+import React from "react";
+import AppContex from "./context";
+
 import RegistrationPage from "./pages/RegistationPage";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import CatalogPage from "./pages/CatalogPage";
 import BrandsPage from "./pages/BrandsPage";
 import ModelsPage from "./pages/ModelsPage";
-import React from "react";
-import AppContex from "./context";
 import CarInfoPage from "./pages/CarInfoPage";
 import AboutPage from "./pages/AboutPage";
 import ContactsPage from "./pages/ContactsPage";
@@ -18,7 +20,7 @@ import UsersPage from "./pages/UsersPage";
 import RequestsPage from "./pages/RequestsPage";
 import QuestionsPage from "./pages/QuestionsPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import AuthService from "./services/AuthService";
+import ManagerPage from "./pages/ManagerPage";
 
 function App() {
   const [user, setUser] = React.useState(() => {
@@ -30,34 +32,20 @@ function App() {
     };
   });
 
-  // const [isManager, setIsManager] = React.useState();
-  // const [isAdmin, setIsAdmin] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(true);
-
-  // React.useEffect(() => {
-  //   if () {
-  //     setIsManager(true);
-  //   } else {
-  //     setIsManager(false);
-  //   }
-  //   if (user.role === "ROLE_ADMIN") {
-  //     setIsAdmin(true);
-  //   } else {
-  //     setIsAdmin(false);
-  //   }
-  // }, [user]);
 
   React.useEffect(() => {
     if (localStorage.getItem("token")) {
-      AuthService.validToken();
+      AuthService.validToken().catch(function (error) {
+        localStorage.removeItem("token");
+        window.location.reload("/login");
+      });
       AuthService.getUserInfo()
         .then(({ data }) => {
           setUser(data);
-          setIsLoading(false);
         });
-    } else {
-      setIsLoading(false);
     }
+    setIsLoading(false);
 
   }, [setUser]);
 
@@ -84,6 +72,7 @@ function App() {
         {(user.role === "ROLE_MANAGER" || user.role === "ROLE_ADMIN") && <Route path="/statistic" element={<StatisticsPage />} />}
         {(user.role === "ROLE_MANAGER" || user.role === "ROLE_ADMIN") && <Route path="/requests" element={<RequestsPage />} />}
         {(user.role === "ROLE_MANAGER" || user.role === "ROLE_ADMIN") && <Route path="/questions" element={<QuestionsPage />} />}
+        {(user.role === "ROLE_MANAGER" || user.role === "ROLE_ADMIN") && <Route path="/manager" element={<ManagerPage />} />}
 
         {user.role === "ROLE_ADMIN" && <Route path="/users" element={<UsersPage />} />}
 

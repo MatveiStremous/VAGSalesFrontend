@@ -17,11 +17,6 @@ class AuthService {
                 headers: {
                     'Authorization': "Bearer " + token
                 }
-            }).catch(function (error) {
-                console.log(error);
-                if (error.response.status === 500) {
-                    localStorage.removeItem("token");
-                }
             })
         );
     }

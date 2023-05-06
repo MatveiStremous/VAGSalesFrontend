@@ -11,16 +11,144 @@
     margin-top: 30px;
     margin-left: 80px;
     margin-right: 80px;
+
     display: flex;
+    flex-direction: column;
     align-items: center;
 
-    .data {
-        width: 1000px;
-        height: 500px;
-        border-radius: 50px;
+
+    .info {
+        margin-bottom: 100px;
+        width: 1200px;
+        border-radius: 30px;
         display: flex;
-        justify-content: center;
+        align-items: center;
+        background-color: #2C2C2C;
+        justify-content: space-between;
+        padding: 20px 40px;
 
+        h2 {
+            color: white;
+            text-decoration: underline;
+            margin: 0%;
+            font-weight: 400;
+        }
 
+        p {
+            color: white;
+            margin: 0px;
+            padding-left: 20px;
+            font-size: 14px;
+            margin-right: 20px;
+        }
+
+        .editInfo {
+            .email {
+                display: flex;
+                align-items: center;
+                height: 70px;
+                margin: 0px;
+            }
+
+            input {
+                width: 400px;
+                display: block;
+                margin: auto;
+                margin-bottom: 15px;
+                height: 40px;
+                border-radius: 20px;
+                color: white;
+                border: 1px solid rgba(#F29330, 0.3);
+                background-color: #2C2C2C;
+                padding: 0px 20px;
+            }
+
+            button {
+                width: 440px;
+                display: block;
+                margin: auto;
+                margin-bottom: 15px;
+                height: 40px;
+                border-radius: 20px;
+                color: white;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                background-color: rgba(#F29330, 0.15%);
+                cursor: pointer;
+            }
+        }
+
+        .changePassword {
+            input {
+                width: 400px;
+                display: block;
+                margin: auto;
+                margin-bottom: 15px;
+                height: 40px;
+                border-radius: 20px;
+                color: white;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                background-color: #2C2C2C;
+                padding: 0px 20px;
+            }
+
+            button {
+                width: 440px;
+                display: block;
+                margin: auto;
+                margin-bottom: 15px;
+                height: 40px;
+                border-radius: 20px;
+                color: white;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                background-color: rgba(255, 255, 255, 0.13%);
+                cursor: pointer;
+            }
+        }
+
+        .center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .logo {
+                display: flex;
+                align-items: center;
+                height: 225px;
+            }
+
+            .exit {
+                width: 200px;
+                display: block;
+                margin: auto;
+                margin-bottom: 15px;
+                height: 40px;
+                border-radius: 20px;
+                color: white;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                background-color: rgba(#F17676, 0.13%);
+                cursor: pointer;
+            }
+        }
+    }
+
+    .data {
+        table {
+            width: 1200px;
+            border-collapse: collapse;
+            border: 2px solid white;
+        }
+
+        td,
+        th {
+            padding: 6px;
+            padding-left: 10px;
+            font-size: 18px;
+            border: 1px solid rgba(#000000, 0.4%);
+            text-align: left;
+        }
+
+        .cancel {
+            cursor: pointer;
+        }
     }
 }
