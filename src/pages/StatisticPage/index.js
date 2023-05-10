@@ -24,6 +24,7 @@ export default function Statistics() {
             <div className={s.content}>
                 <Header />
                 <div className={s.body}>
+                    <h2>Топ популярных моделей за последний месяц</h2>
                     <BarChart width={800} height={600} data={carsData} label className={s.left}>
                         <Tooltip />
                         <Bar dataKey="value" fill='orange' />
@@ -31,6 +32,7 @@ export default function Statistics() {
                         <XAxis dataKey="key" />
                         <YAxis />
                     </BarChart>
+                    <h2>Распределение заявок по дням недели за последний месяц</h2>
                     <PieChart width={600} height={600} className={s.right}>
                         <Tooltip />
                         <Pie data={daysData} dataKey="value" nameKey="key" outerRadius={250} fill="#8884d8" label={true} >

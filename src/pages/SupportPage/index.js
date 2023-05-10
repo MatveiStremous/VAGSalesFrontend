@@ -1,7 +1,7 @@
 import s from './supportPage.module.scss';
 import React from 'react';
 import Header from '../../components/Header';
-import Logo from '../../components/Logo';
+import Logo3 from '../../components/Logo3';
 import AppContex from '../../context';
 import QuestionService from '../../services/QuestionService';
 
@@ -32,19 +32,18 @@ export default function SupportPage() {
                             <div className={s.up}>
                                 <div className={s.left}>
                                     <p>Почта</p>
-                                    <input required placeholder='Ваша почта' type="email" value={email} onChange={(obj) => setEmail(obj.target.value)} />
+                                    <input className={s.inp} required placeholder='Ваша почта' type="email" value={email} onChange={(obj) => setEmail(obj.target.value)} />
                                     <p>Имя</p>
-                                    <input required placeholder='Ваше имя' value={name} onChange={(obj) => setName(obj.target.value)} />
+                                    <input className={s.inp} required placeholder='Ваше имя' value={name} onChange={(obj) => setName(obj.target.value)} />
                                 </div>
                                 <div className={s.right}>
-                                    <Logo />
+                                    <Logo3 />
                                 </div>
                             </div>
                             <div className={s.bottom}>
                                 <p>Вопрос</p>
                                 <textarea required placeholder='Ваш вопрос' value={message} onChange={(obj) => setMessage(obj.target.value)} />
-
-                                <button>Отправить вопрос</button>
+                                <div className={s.but}><button>Отправить вопрос</button></div>
                             </div>
                         </form>
                     </div>

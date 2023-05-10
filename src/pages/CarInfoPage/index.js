@@ -59,14 +59,14 @@ export default function CarInfo() {
                             <h3 className={s.name}>Описание комплектации</h3>
                             <h4 className={s.data}>{car.description}</h4>
                         </div>
+                        {
+                            (user.role === "ROLE_MANAGER" || user.role === "ROLE_ADMIN") &&
+                            <div className={s.buttons}>
+                                <button onClick={() => deleteThisCar()}>Удалить</button>
+                                <button onClick={() => setIsEdit(true)}>Редактировать</button>
+                            </div>
+                        }
                     </div>
-                    {
-                        (user.role === "ROLE_MANAGER" || user.role === "ROLE_ADMIN") &&
-                        <div>
-                            <button onClick={() => deleteThisCar()}>Удалить</button>
-                            <button onClick={() => setIsEdit(true)}>Редактировать</button>
-                        </div>
-                    }
                 </div>
                 <div className={s.bottomInfo}>
                     <p className={s.leftBottom}>{car.modelDescription}</p>

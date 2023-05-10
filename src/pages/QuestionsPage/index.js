@@ -45,30 +45,35 @@ export default function QuestionsPage() {
                 <div className={s.body}>
                     <div className={s.data}>
                         {isAnswer &&
-                            <div>
-                                <div>{answeringQuestion.id}</div>
-                                <div>{answeringQuestion.name}</div>
-                                <div>{answeringQuestion.email}</div>
-                                <div>{answeringQuestion.message}</div>
-                                <input value={answer} onChange={(obj) => setAnswer(obj.target.value)} />
-                                <button onClick={() => setIsAgreeWindowActive(true)}>Отправить ответ</button>
+                            <div className={s.answer}>
+                                <div className={s.row}><h1>Номер клиента</h1><h2>{answeringQuestion.id}</h2></div>
+                                <div className={s.row}><h1>Имя клиента</h1><h2>{answeringQuestion.name}</h2></div>
+                                <div className={s.row}><h1>Почта клиента</h1><h2>{answeringQuestion.email}</h2></div>
+                                <div className={s.row}><h1>Вопрос</h1><h2>{answeringQuestion.message}</h2></div>
+                                <div className={s.ans}>
+                                    <input placeholder='Ответ' value={answer} onChange={(obj) => setAnswer(obj.target.value)} />
+                                    <button onClick={() => setIsAgreeWindowActive(true)}>Отправить ответ</button>
+                                </div>
                             </div>
                         }
-                        <input value={findValue} onChange={(obj) => setFindValue(obj.target.value.toLowerCase())}></input>
-                        <div>
-                            <div>
-                                {filteredQuestions
-                                    .map((question) => (
-                                        <div className={s.row} key={question.id}>
-                                            <div>{question.id}</div>
-                                            <div>{question.name}</div>
-                                            <div>{question.email}</div>
-                                            <div>{question.message}</div>
-                                            <button onClick={() => onAnswerQuestion(question)}>Ответить</button>
-                                        </div>
-                                    ))}
-                            </div>
+                        <div className={s.buttons}>
+                            <input value={findValue} placeholder='Поиск' onChange={(obj) => setFindValue(obj.target.value.toLowerCase())}></input>
                         </div>
+                        <table>
+                            <tr className={s.head}>
+                                <th>№</th><th>Имя</th><th>Почта</th><th>Вопрос</th><th>&nbsp;</th>
+                            </tr>
+                            {filteredQuestions
+                                .map((question) => (
+                                    <tr key={question.id}>
+                                        <td>{question.id}</td>
+                                        <td>{question.name}</td>
+                                        <td>{question.email}</td>
+                                        <td>{question.message}</td>
+                                        <td className={s.cancel} onClick={() => onAnswerQuestion(question)}>Ответить</td>
+                                    </tr>
+                                ))}
+                        </table>
                     </div>
                 </div>
                 {isAgreeWindowActive &&

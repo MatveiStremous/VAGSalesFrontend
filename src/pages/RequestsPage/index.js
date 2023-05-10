@@ -45,45 +45,63 @@ export default function RequestsPage() {
                 <div className={s.body}>
                     <div className={s.data}>
                         {isEdit &&
-                            <div>
-                                <div>{editRequest.id}</div>
-                                <div>{editRequest.date}</div>
-                                <div>{editRequest.name}</div>
-                                <div>{editRequest.phone}</div>
-                                <div>{editRequest.email}</div>
-                                <div>{editRequest.carName}</div>
-                                <select defaultValue="" value={status} onChange={(obj) => setStatus(obj.target.value)}>
-                                    <option value="Оформлена">Оформлена</option>
-                                    <option value="Обрабатывается">Обрабатывается</option>
-                                    <option value="Выполнена">Выполнена</option>
-                                </select>
-                                <button onClick={() => onCommitEdit()}>Сохранить статус</button>
+                            <div className={s.change}>
+                                <h2>Смена статуса</h2>
+                                <table>
+                                    <tr className={s.head}>
+                                        <th>№</th><th>ДАТА</th><th>Имя</th><th>Телефон</th><th>Почта</th><th>Машина</th><th>Статус</th><th>&nbsp;</th>
+                                    </tr>
+                                    <tr>
+                                        <td>{editRequest.id}</td>
+                                        <td>{editRequest.date.split("-").reverse().join(".")}</td>
+                                        <td>{editRequest.name}</td>
+                                        <td>{editRequest.phone}</td>
+                                        <td>{editRequest.email}</td>
+                                        <td>{editRequest.carName}</td>
+                                        <td>
+                                            <select defaultValue="" value={status} onChange={(obj) => setStatus(obj.target.value)}>
+                                                <option value="Оформлена">Оформлена</option>
+                                                <option value="Обрабатывается">Обрабатывается</option>
+                                                <option value="Выполнена">Выполнена</option>
+                                            </select>
+                                        </td>
+                                        <td className={s.cancel} onClick={() => onCommitEdit()}>
+                                            Сохранить статус
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         }
-                        <input value={findValue} onChange={(obj) => setFindValue(obj.target.value.toLowerCase())}></input>
-                        <select defaultValue="" value={findStatus} onChange={(obj) => setFindStatus(obj.target.value)}>
-                            <option value="">Все</option>
-                            <option value="Отменена">Отменена</option>
-                            <option value="Оформлена">Оформлена</option>
-                            <option value="Обрабатывается">Обрабатывается</option>
-                            <option value="Выполнена">Выполнена</option>
-                        </select>
+                        <div className={s.buttons}>
+                            <input placeholder="Поиск" value={findValue} onChange={(obj) => setFindValue(obj.target.value.toLowerCase())}></input>
+                            <select defaultValue="" value={findStatus} onChange={(obj) => setFindStatus(obj.target.value)}>
+                                <option value="">Все</option>
+                                <option value="Отменена">Отменена</option>
+                                <option value="Оформлена">Оформлена</option>
+                                <option value="Обрабатывается">Обрабатывается</option>
+                                <option value="Выполнена">Выполнена</option>
+                            </select>
+                        </div>
                         <div>
-                            <div>
+                            <table>
+                                <tr className={s.head}>
+                                    <th>№</th><th>ДАТА</th><th>Имя</th><th>Телефон</th><th>Почта</th><th>Машина</th><th>Статус</th><th>&nbsp;</th>
+                                </tr>
                                 {filteredRequests
                                     .map((request) => (
-                                        <div className={s.row} key={request.id}>
-                                            <div>{request.id}</div>
-                                            <div>{request.date}</div>
-                                            <div>{request.name}</div>
-                                            <div>{request.phone}</div>
-                                            <div>{request.email}</div>
-                                            <div>{request.carName}</div>
-                                            <div>{request.status}</div>
-                                            <button onClick={() => onEditRequest(request)}>Сменить статус</button>
-                                        </div>
+                                        <tr key={request.id}>
+                                            <td>{request.id}</td>
+                                            <td>{request.date.split("-").reverse().join(".")}</td>
+                                            <td>{request.name}</td>
+                                            <td>{request.phone}</td>
+                                            <td>{request.email}</td>
+                                            <td>{request.carName}</td>
+                                            <td>{request.status}</td>
+                                            <td className={s.cancel} onClick={() => { onEditRequest(request) }}>Сменить статус</td>
+
+                                        </tr>
                                     ))}
-                            </div>
+                            </table>
                         </div>
                     </div>
                 </div>

@@ -26,6 +26,28 @@
 
         .rightInfo {
             width: 40%;
+            display: flex;
+            flex-direction: column;
+
+            .buttons {
+                margin-top: 20px;
+                display: flex;
+                justify-content: space-between;
+
+                button {
+                    width: 350px;
+                    padding: 0px 10px;
+                    border-radius: 20px;
+                    height: 40px;
+                    border: 1px solid black;
+                    background-color: rgba(0, 0, 0, 0.2);
+
+                    &:hover {
+                        cursor: pointer;
+                        background-color: rgba(0, 0, 0, 0.4);
+                    }
+                }
+            }
 
             .allData {
                 .title {

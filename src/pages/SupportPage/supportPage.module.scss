@@ -17,28 +17,77 @@
 
     .data {
         width: 1000px;
-        height: 500px;
-        background-color: black;
+        height: 550px;
+        background-color: #2C2C2C;
         border-radius: 50px;
         display: flex;
         justify-content: center;
 
+        p {
+            font-size: 20px;
+            color: white;
+            margin: 0px 25px;
+        }
+
         .up {
             width: 100%;
-            height: 50%;
+            height: 35%;
             display: flex;
+            margin-top: 40px;
+
+            .left {
+
+                .inp {
+                    width: 500px;
+                    height: 50px;
+                    padding: 0px 30px;
+                    border-radius: 25px;
+                    background-color: #2C2C2C;
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    color: white;
+                    font-size: 20px;
+                    margin-bottom: 20px;
+                }
+            }
+
+            .right {
+                margin: 70px 0px 0px 200px;
+            }
         }
 
         .bottom {
             width: 900px;
-            height: 230px;
 
             textarea {
-                width: 850px;
+                background-color: #2C2C2C;
+                width: 830px;
                 height: 100px;
                 border-radius: 40px;
-                padding: 10px;
+                padding: 20px 30px;
                 font-size: 18px;
+                color: white;
+                font-size: 20px;
+            }
+
+            .but {
+                display: flex;
+                justify-content: center;
+
+                button {
+                    margin: 40px 0px;
+                    background-color: rgba(255, 255, 255, 0.13);
+                    color: white;
+                    font-size: 20px;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    width: 350px;
+                    height: 50px;
+                    border-radius: 25px;
+
+                    &:hover {
+                        cursor: pointer;
+                        background-color: rgba(255, 255, 255, 0.3);
+                    }
+                }
             }
         }
     }

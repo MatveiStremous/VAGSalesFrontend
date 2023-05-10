@@ -33,35 +33,44 @@ export default function UsersPage() {
                 <Header />
                 <div className={s.body}>
                     <div className={s.data}>
-                        <input value={findValue} onChange={(obj) => setFindValue(obj.target.value.toLowerCase())}></input>
-                        <select defaultValue="" value={role} onChange={(obj) => setRole(obj.target.value)}>
-                            <option value="">Все</option>
-                            <option value="Пользователь">Пользователь</option>
-                            <option value="Менеджер">Менеджер</option>
-                            <option value="Администратор">Администратор</option>
-                        </select>
+                        <div className={s.buttons}>
+                            <input value={findValue} onChange={(obj) => setFindValue(obj.target.value.toLowerCase())}></input>
+                            <select defaultValue="" value={role} onChange={(obj) => setRole(obj.target.value)}>
+                                <option value="">Все</option>
+                                <option value="Пользователь">Пользователь</option>
+                                <option value="Менеджер">Менеджер</option>
+                                <option value="Администратор">Администратор</option>
+                            </select>
+                        </div>
                         <div>
-                            {filteredUsers
-                                .map((user) => (
-                                    <div className={s.row} key={user.id}>
-                                        <div>{user.email}</div>
-                                        <div>{user.name}</div>
-                                        <div>{user.phone}</div>
-                                        <div>{user.role}</div>
-                                        {
-                                            user.role === "Пользователь" &&
-                                            <button onClick={() => onChangeRole(user.id, "Менеджер")}>Назначить менеджером</button>
-                                        }
-                                        {
-                                            user.role === "Менеджер" &&
-                                            <button onClick={() => onChangeRole(user.id, "Пользователь")}>Снять с должности менеджера</button>
-                                        }
-                                    </div>
-                                ))}
+                            <table>
+                                <tr className={s.head}>
+                                    <th>№</th><th>Почта</th><th>Имя</th><th>Телефон</th><th>Роль</th><th>&nbsp;</th>
+                                </tr>
+                                {filteredUsers
+                                    .map((user) => (
+                                        <tr key={user.id}>
+                                            <td>{user.id}</td>
+                                            <td>{user.email}</td>
+                                            <td>{user.name}</td>
+                                            <td>{user.phone}</td>
+                                            <td>{user.role}</td>
+                                            {
+                                                user.role === "Пользователь" &&
+                                                <td className={s.cancel} onClick={() => onChangeRole(user.id, "Менеджер")}>Назначить менеджером</td>
+                                            }
+                                            {
+                                                user.role === "Менеджер" &&
+                                                <td className={s.cancel} onClick={() => onChangeRole(user.id, "Пользователь")}>Снять с должности менеджера</td>
+                                            }
+                                        </tr>
+                                    ))}
+                            </table>
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
